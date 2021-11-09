@@ -34,17 +34,11 @@ public class Integral {
         }
     }
     
-     private static class Exp{
-         double e(double x) {
-             return Math.exp(-x);
-         }
-     }
-    
-     private static class Sin{
-         double s(double x) {
+        
+     public static double s(double x) {
              return Math.sin(x)*x;
          }
-     }
+     
 
      public static void main(String[] args) {
        Function f1 = new Function() {
@@ -53,27 +47,27 @@ public class Integral {
             }
         };
         System.out.println("");
-        System.out.println("Реализация интерфеса с помощью вложенного класса: ");
+        System.out.println("Реализация интерфеса с помощью анонимного класса: ");
         System.out.println(meth(f1, 2, 5, accur));
         System.out.println("____________________________________________________________");
         
         Function f2 = new Func();
         System.out.println("");
-        System.out.println("Реализация интерфеса с помощью анонимного класса: ");
+        System.out.println("Реализация интерфеса с помощью вложенного класса: ");
         System.out.println(meth(f2, 3, 4, accur));
         System.out.println("____________________________________________________________");
         
-        Sin s = new Sin();
-        Function f3 = s::s; 
+        
+        Function f3 = Integral::s; 
         System.out.println("");
         System.out.println("Реализация интерфеса с помощью ссылки на метод экземпляра: ");
         System.out.println(meth(f3, 0, 1, accur));
         System.out.println("____________________________________________________________");
         
-        Exp e = new Exp();
-        Function f4 = e::e; 
+        
+        Function f4 = Math::exp; 
         System.out.println("");
-        System.out.println("Реализация интерфеса с помощью ссылки на метод экземпляра: ");
+        System.out.println("Реализация интерфеса с помощью ссылки на статический метод: ");
         System.out.println(meth(f4, 0.01, 2, accur));
         System.out.println("___________________________________________________________");
        
